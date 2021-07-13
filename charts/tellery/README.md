@@ -2,6 +2,8 @@
 
 Running your own Tellery with Kubernetes
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/tellery)](https://artifacthub.io/packages/search?repo=tellery)
+
 ## Prerequisites
 
 - [Helm](https://docs.helm.sh/docs/intro/install/) 3.0+
