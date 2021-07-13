@@ -11,5 +11,6 @@
 ```sh
 helm repo add tellery-stable https://tellery.github.io/charts
 helm repo update
-helm install tellery tellery-stable
+
+helm install tellery tellery-stable/tellery
 ```
