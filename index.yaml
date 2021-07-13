@@ -26,6 +26,6 @@ entries:
     name: tellery
     type: application
     urls:
-    - https://github.com/tellery/charts/releases/download/0.0.1/tellery-0.0.1.tgz
+    - https://github.com/tellery/charts/releases/download/tellery-0.0.1/tellery-0.0.1.tgz
     version: 0.0.1
 generated: "2021-07-13T15:24:07.74436+08:00"
