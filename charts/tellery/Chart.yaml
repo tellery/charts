@@ -8,7 +8,12 @@ annotations:
     - name: connector
       image: tellery/connector:0.4.0-beta
   artifacthub.io/prerelease: 'true'
-  artifacthub.io/license: Apache-2.0 License
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/links: |
+    - name: Homepage
+      url: https://tellery.io
+    - name: Source
+      url: https://github.com/tellery/tellery
 type: application
 version: 0.0.1
 appVersion: 0.4.0-beta
