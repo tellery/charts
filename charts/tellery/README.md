@@ -65,11 +65,11 @@ You can choose `PostgreSQL deployed by Helm` by `--set postgresql.enabled=true` 
 | Parameter                   | Description                        | Default    |
 | --------------------------- | ---------------------------------- | ---------- |
 | postgresql.enabled          | Enable postgresql deployed by helm | false      |
-| externalPostgresql.host     | External postgresql host           | postgresql |
+| externalPostgresql.host     | External postgresql host           | null       |
 | externalPostgresql.port     | External postgresql port           | 5432       |
 | externalPostgresql.database | External postgresql Database name  | tellery    |
 | externalPostgresql.username | External postgresql username       | postgres   |
-| externalPostgresql.password | External postgresql password       | ''         |
+| externalPostgresql.password | External postgresql password       | null       |
 
 ### Object Storage Configuration
 
