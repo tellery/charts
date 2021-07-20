@@ -36,10 +36,10 @@ postgresql:
     size: 20Gi
 
 externalPostgresql:
-  host: postgresql
+  # host: postgresql
   port: 5432
   username: postgres
-  password: tellery
+  # password: tellery
   database: tellery
 
 redis:
