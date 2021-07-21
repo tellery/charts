@@ -4,10 +4,10 @@ description: A Helm chart for Kubernetes
 annotations:
   artifacthub.io/images: |
     - name: tellery
-      image: tellery/tellery:0.4.1
+      image: tellery/tellery:0.5.0
     - name: connector
-      image: tellery/connector:0.4.1
-  artifacthub.io/prerelease: 'true'
+      image: tellery/connector:0.5.0
+  artifacthub.io/prerelease: "false"
   artifacthub.io/license: Apache-2.0
   artifacthub.io/links: |
     - name: Homepage
@@ -15,8 +15,8 @@ annotations:
     - name: Source
       url: https://github.com/tellery/tellery
 type: application
-version: 0.0.3
-appVersion: 0.4.1
+version: 0.0.4
+appVersion: 0.5.0
 dependencies:
   - name: redis
     repository: https://charts.bitnami.com/bitnami
