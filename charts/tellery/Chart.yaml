@@ -1,0 +1,33 @@
+apiVersion: v2
+name: tellery
+type: application
+version: 0.0.4
+appVersion: 0.5.0
+icon: https://avatars.githubusercontent.com/u/86034719?s=400&v=4
+description: A Helm Chart for quickly installing highly available Tellery on Kubernetes
+maintainers:
+  - name: Tellery
+    email: contact@tellery.io
+    url: https://github.com/tellery
+annotations:
+  artifacthub.io/images: |
+    - name: tellery
+      image: tellery/tellery:0.5.0
+    - name: connector
+      image: tellery/connector:0.5.0
+  artifacthub.io/prerelease: "false"
+  artifacthub.io/license: Apache-2.0
+  artifacthub.io/links: |
+    - name: Homepage
+      url: https://tellery.io
+    - name: Source
+      url: https://github.com/tellery/tellery
+dependencies:
+  - name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 14.3.3
+    condition: redis.enabled
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 10.4.8
+    condition: postgresql.enabled
