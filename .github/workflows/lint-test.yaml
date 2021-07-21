@@ -26,6 +26,10 @@ jobs:
         with:
           version: v3.4.0
 
+      - name: Add dependency chart repos
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
@@ -33,16 +37,18 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
+
       - name: Run chart-testing (lint)
         run: ct lint --config ct-config.yaml --check-version-increment=false
 
-      - name: Create kind cluster
-        uses: helm/kind-action@v1.1.0
-        if: steps.list-changed.outputs.changed == 'true'
-        timeout-minutes: 5
-        with:
-          version: v0.11.1
-          wait: 300s
+      # TODO: support e2e test later
+      # - name: Create kind cluster
+      #   uses: helm/kind-action@v1.1.0
+      #   if: steps.list-changed.outputs.changed == 'true'
+      #   timeout-minutes: 5
+      #   with:
+      #     version: v0.11.1
+      #     wait: 300s
 
-      - name: Run chart-testing (install)
-        run: ct install --config ct-config.yaml
+      # - name: Run chart-testing (install)
+      #   run: ct install --config ct-config.yaml
