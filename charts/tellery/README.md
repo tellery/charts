@@ -62,14 +62,14 @@ You can choose `PostgreSQL deployed by Helm` by `--set postgresql.enabled=true` 
 
 `PostgreSQL deployed by Helm` is base on [Postgresql Helm Chart](https://artifacthub.io/packages/helm/bitnami/postgresql/10.4.8#parameters), you can see it for more configurations.
 
-| Parameter                   | Description                        | Default    |
-| --------------------------- | ---------------------------------- | ---------- |
-| postgresql.enabled          | Enable postgresql deployed by helm | false      |
-| externalPostgresql.host     | External postgresql host           | null       |
-| externalPostgresql.port     | External postgresql port           | 5432       |
-| externalPostgresql.database | External postgresql Database name  | tellery    |
-| externalPostgresql.username | External postgresql username       | postgres   |
-| externalPostgresql.password | External postgresql password       | null       |
+| Parameter                   | Description                        | Default  |
+| --------------------------- | ---------------------------------- | -------- |
+| postgresql.enabled          | Enable postgresql deployed by helm | false    |
+| externalPostgresql.host     | External postgresql host           | null     |
+| externalPostgresql.port     | External postgresql port           | 5432     |
+| externalPostgresql.database | External postgresql Database name  | tellery  |
+| externalPostgresql.username | External postgresql username       | postgres |
+| externalPostgresql.password | External postgresql password       | null     |
 
 ### Object Storage Configuration
 
@@ -77,14 +77,14 @@ If you use PG as object storage, you only need to set `objectStorage.type=postgr
 
 `objectStorage.endpoint` is optional when you are using `AWS S3`.
 
-| Parameter               | Description               | Default                            |
-| ----------------------- | ------------------------- | ---------------------------------- |
-| objectStorage.type      | Object storage type       | postgres                           |
-| objectStorage.endpoint  | Object storage endpoint   | null                               |
-| objectStorage.bucket    | Object storage bucket     | null                               |
-| objectStorage.region    | Object storage region     | null                               |
-| objectStorage.accessKey | Object storage access key | null                               |
-| objectStorage.secretKey | Object storage secret key | null                               |
+| Parameter               | Description               | Default  |
+| ----------------------- | ------------------------- | -------- |
+| objectStorage.type      | Object storage type       | postgres |
+| objectStorage.endpoint  | Object storage endpoint   | null     |
+| objectStorage.bucket    | Object storage bucket     | null     |
+| objectStorage.region    | Object storage region     | null     |
+| objectStorage.accessKey | Object storage access key | null     |
+| objectStorage.secretKey | Object storage secret key | null     |
 
 ### Redis Configuration
 
@@ -146,31 +146,59 @@ If your written language is not English, you can modify your search plugin throu
 | ingress.hostname    | Ingress resource hostname          | null    |
 | ingress.tls         | Ingress TLS configuration          | null    |
 
-The following configuration is configured for each service, the following uses `$NAME` instead of `(server | connector)`
+### Server Configuration
 
-| Parameter                                        | Description                                     | Default        |
-| ------------------------------------------------ | ----------------------------------------------- | -------------- |
-| images.$NAME.repository                          | Container image repository                      | tellery/server |
-| images.$NAME.tag                                 | Container image tag                             | 0.1.0          |
-| images.$NAME.pullPolicy                          | Container image pullPolicy                      | IfNotPresent   |
-| images.$NAME.imagePullSecrets                    | Container image image pull secrets              | []             |
-| $NAME.replicas                                   | desired number of pods                          | 1              |
-| $NAME.probeInitialDelaySeconds                   | Delay before liveness probe is initiated        | 10             |
-| $NAME.resources                                  | Server resource requests and limits             | {}             |
-| $NAME.affinity                                   | Affinity settings for pod assignment            | {}             |
-| $NAME.nodeSelector                               | Node labels for pod assignment                  | {}             |
-| $NAME.tolerations                                | Toleration labels for pod assignment            | {}             |
-| $NAME.podLabels                                  | Ingress labels configuration                    | {}             |
-| $NAME.autoscaling.enabled                        | Enable auto scaling                             | false          |
-| $NAME.autoscaling.minReplicas                    | Minimum number of pods                          | 1              |
-| $NAME.autoscaling.maxReplicas                    | Maximum number of pods                          | 2              |
-| $NAME.autoscaling.targetCPUUtilizationPercentage | Define the CPU trigger value of the expansion   | 50             |
-| $NAME.service.name                               | Server's port name defined in Service           | http           |
-| $NAME.service.type                               | Service Type                                    | ClusterIP      |
-| $NAME.service.externalPort                       | Service port                                    | 80,8000,50051  |
-| $NAME.service.annotations                        | Annotations for service assignment              | {}             |
-| $NAME.service.externalIPs                        | ExternalIPs for service assignment              | null           |
-| $NAME.service.loadBalancerSourceRanges           | LoadBalancerSourceRanges for service assignment | null           |
+| Parameter                                         | Description                                     | Default        |
+| ------------------------------------------------- | ----------------------------------------------- | -------------- |
+| images.server.repository                          | Container image repository                      | tellery/server |
+| images.server.tag                                 | Container image tag                             | 0.5.0          |
+| images.server.pullPolicy                          | Container image pullPolicy                      | IfNotPresent   |
+| images.server.imagePullSecrets                    | Container image image pull secrets              | []             |
+| server.replicas                                   | desired number of pods                          | 1              |
+| server.probeInitialDelaySeconds                   | Delay before liveness probe is initiated        | 10             |
+| server.resources                                  | Container resource requests and limits          | {}             |
+| server.affinity                                   | Affinity settings for pod assignment            | {}             |
+| server.nodeSelector                               | Node labels for pod assignment                  | {}             |
+| server.tolerations                                | Toleration labels for pod assignment            | {}             |
+| server.podLabels                                  | Ingress labels configuration                    | {}             |
+| server.autoscaling.enabled                        | Enable auto scaling                             | false          |
+| server.autoscaling.minReplicas                    | Minimum number of pods                          | 1              |
+| server.autoscaling.maxReplicas                    | Maximum number of pods                          | 2              |
+| server.autoscaling.targetCPUUtilizationPercentage | Define the CPU trigger value of the expansion   | 50             |
+| server.service.name                               | Server's port name defined in Service           | http           |
+| server.service.type                               | Service Type                                    | ClusterIP      |
+| server.service.externalPort                       | Service port                                    | 8000           |
+| server.service.annotations                        | Annotations for service assignment              | {}             |
+| server.service.externalIPs                        | ExternalIPs for service assignment              | null           |
+| server.service.loadBalancerSourceRanges           | LoadBalancerSourceRanges for service assignment | null           |
+
+### Connector Configuration
+
+| Parameter                                            | Description                                     | Default           |
+| ---------------------------------------------------- | ----------------------------------------------- | ----------------- |
+| images.connector.repository                          | Container image repository                      | tellery/connector |
+| images.connector.tag                                 | Container image tag                             | 0.5.0             |
+| images.connector.pullPolicy                          | Container image pullPolicy                      | IfNotPresent      |
+| images.connector.imagePullSecrets                    | Container image image pull secrets              | []                |
+| connector.replicas                                   | desired number of pods                          | 1                 |
+| connector.probeInitialDelaySeconds                   | Delay before liveness probe is initiated        | 10                |
+| connector.resources                                  | Container resource requests and limits          | {}                |
+| connector.affinity                                   | Affinity settings for pod assignment            | {}                |
+| connector.nodeSelector                               | Node labels for pod assignment                  | {}                |
+| connector.tolerations                                | Toleration labels for pod assignment            | {}                |
+| connector.podLabels                                  | Ingress labels configuration                    | {}                |
+| connector.autoscaling.enabled                        | Enable auto scaling                             | false             |
+| connector.autoscaling.minReplicas                    | Minimum number of pods                          | 1                 |
+| connector.autoscaling.maxReplicas                    | Maximum number of pods                          | 2                 |
+| connector.autoscaling.targetCPUUtilizationPercentage | Define the CPU trigger value of the expansion   | 50                |
+| connector.service.name                               | Server's port name defined in Service           | http              |
+| connector.service.type                               | Service Type                                    | ClusterIP         |
+| connector.service.externalPort                       | Service port                                    | 50051             |
+| connector.service.annotations                        | Annotations for service assignment              | {}                |
+| connector.service.externalIPs                        | ExternalIPs for service assignment              | null              |
+| connector.service.loadBalancerSourceRanges           | LoadBalancerSourceRanges for service assignment | null              |
+| connector.persistence.enabled                        | Persistence volume for storing configurations   | true              |
+| connector.persistence.size                           | Size of Persistence volume                      | 1Gi               |
 
 Using the `--set key\value[,key=value]` argument to specify each parameter
 
