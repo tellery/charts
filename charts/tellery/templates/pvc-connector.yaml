@@ -1,0 +1,23 @@
+{{- if .Values.connector.persistence.enabled -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "tellery.fullname" . }}-connector-data
+  labels:
+    app: {{ include "tellery.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name }}
+spec:
+  accessModes:
+    - {{ .Values.connector.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.connector.persistence.size | quote }}
+{{- if .Values.connector.persistence.storageClass }}
+{{- if (eq "-" .Values.connector.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.connector.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+{{- end -}}

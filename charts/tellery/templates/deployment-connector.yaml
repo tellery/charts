@@ -66,5 +66,16 @@ spec:
           periodSeconds: 30
           successThreshold: 1
           failureThreshold: 5
+        volumeMounts:
+        - name: connector-data
+          mountPath: /usr/app
         resources:
 {{ toYaml .Values.connector.resources | indent 12 }}
+      volumes:
+      - name: connector-data
+        {{- if .Values.connector.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ include "tellery.fullname" . }}-connector-data
+        {{- else }}
+        emptyDir: {}
+        {{- end }}

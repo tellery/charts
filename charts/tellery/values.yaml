@@ -139,6 +139,13 @@ connector:
     # - 192.168.0.1
     # loadBalancerSourceRanges: []
 
+  # pvc to restore profiles of connector
+  persistence:
+    enabled: true
+    # storageClass: "-"
+    accessMode: ReadWriteMany
+    size: 1Gi
+
 ingress:
   enabled: false
   # annotations:
