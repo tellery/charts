@@ -29,7 +29,7 @@ postgresql:
   replication:
     enabled: false
     slaveReplicas: 2
-    synchronousCommit: on
+    synchronousCommit: true
     numSynchronousReplicas: 1
   persistence:
     enabled: false
