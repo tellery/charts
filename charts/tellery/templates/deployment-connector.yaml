@@ -68,7 +68,7 @@ spec:
           failureThreshold: 5
         volumeMounts:
         - name: connector-data
-          mountPath: /usr/app
+          mountPath: /usr/app/extra
         resources:
 {{ toYaml .Values.connector.resources | indent 12 }}
       volumes:
