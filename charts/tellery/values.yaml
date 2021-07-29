@@ -29,7 +29,7 @@ postgresql:
   replication:
     enabled: false
     slaveReplicas: 2
-    synchronousCommit: on
+    synchronousCommit: true
     numSynchronousReplicas: 1
   persistence:
     enabled: false
@@ -138,6 +138,13 @@ connector:
     # externalIPs:
     # - 192.168.0.1
     # loadBalancerSourceRanges: []
+
+  # pvc to restore profiles of connector
+  persistence:
+    enabled: true
+    # storageClass: "-"
+    accessMode: ReadWriteMany
+    size: 1Gi
 
 ingress:
   enabled: false
