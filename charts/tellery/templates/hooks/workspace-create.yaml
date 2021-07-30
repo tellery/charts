@@ -1,4 +1,4 @@
-{{- if and .Values.init.workspace.create -}}
+{{- if or .Values.system.anonymous.enabled .Values.init.workspace.create -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
