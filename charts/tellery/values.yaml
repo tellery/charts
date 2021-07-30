@@ -172,9 +172,6 @@ system:
   anonymous:
     enabled: false
 
-profile:
-  create: false
-
 init:
   user:
     create: false
