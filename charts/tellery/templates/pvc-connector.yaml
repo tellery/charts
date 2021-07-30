@@ -7,6 +7,8 @@ metadata:
     app: {{ include "tellery.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     release: {{ .Release.Name }}
+  annotations:
+    helm.sh/resource-policy: keep
 spec:
   accessModes:
     - {{ .Values.connector.persistence.accessMode | quote }}
