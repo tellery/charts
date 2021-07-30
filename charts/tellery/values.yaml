@@ -169,6 +169,8 @@ system:
     port: 80
     protocol: https
     # host: tellery.local
+  anonymous:
+    enabled: false
 
 profile:
   create: false

@@ -58,3 +58,6 @@ data:
   SERVER_PROTO: {{ .Values.system.web.protocol }}
   SERVER_HOST: {{ required "A valid system.web.host required!" .Values.system.web.host }}
   SERVER_WEB_PORT: {{ .Values.system.web.port | quote }}
+  {{- if .Values.system.anonymous.enabled }}
+  ANONYMOUS: 'true'
+  {{- end }}

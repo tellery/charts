@@ -113,18 +113,21 @@ You can choose `Redis deployed by Helm` by `--set redis.enabled=true` or `Extern
 
 ### System Configuration
 
-`system.web.host` is required, setting it, to specify the access domain of Tellery service
+`system.web.host` is required, setting it, to specify the access domain of Tellery service.
 
 If your written language is not English, you can modify your search plugin through [this document](https://github.com/tellery/tellery) to get a better search experience.
 
-| Parameter              | Description                                                | Default                |
-| ---------------------- | ---------------------------------------------------------- | ---------------------- |
-| system.secretKey       | Secret key for encrypt sensitive information into database | pjfJ2Cbe3sv0Gtz32Krr4A |
-| system.search.language | Language for full-text search                              | en                     |
-| system.search.plugin   | Pixel plug-in for full-text search                         | null                   |
-| system.web.port        | Web server port                                            | 80                     |
-| system.web.protocol    | Web server protocol                                        | https                  |
-| system.web.host        | Web server host                                            | null                   |
+| Parameter                | Description                                                | Default                |
+| ------------------------ | ---------------------------------------------------------- | ---------------------- |
+| system.secretKey         | Secret key for encrypt sensitive information into database | pjfJ2Cbe3sv0Gtz32Krr4A |
+| system.search.language   | Language for full-text search                              | en                     |
+| system.search.plugin     | Pixel plug-in for full-text search                         | null                   |
+| system.web.port          | Web server port                                            | 80                     |
+| system.web.protocol      | Web server protocol                                        | https                  |
+| system.web.host          | Web server host                                            | null                   |
+| system.anonymous.enabled | Enabling anonymous mode                                    | false                  |
+
+> If anonymous mode is enabled, the initial user and initial workspace are automatically created.
 
 ### Initialization Configuration
 
