@@ -53,6 +53,10 @@ spec:
         env:
         - name: NODE_ENV
           value: production
+        {{- if .Values.system.anonymous.enabled }}
+        - name: ANONYMOUS
+          value: 'true'
+        {{- end }}
 {{- if .Values.server.env }}
 {{ toYaml .Values.server.env | indent 8 }}
 {{- end }}
