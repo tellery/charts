@@ -1,8 +1,8 @@
 apiVersion: v2
 name: tellery
 type: application
-version: 0.0.7
-appVersion: 0.6.0-rc1
+version: 0.0.8
+appVersion: 0.6.0
 icon: https://avatars.githubusercontent.com/u/86034719?s=400&v=4
 description: A Helm Chart for quickly installing highly available Tellery on Kubernetes
 maintainers:
@@ -12,9 +12,9 @@ maintainers:
 annotations:
   artifacthub.io/images: |
     - name: tellery
-      image: tellery/tellery:0.6.0-rc1
+      image: tellery/tellery:0.6.0
     - name: connector
-      image: tellery/connector:0.6.0-rc1
+      image: tellery/connector:0.6.0
   artifacthub.io/prerelease: "false"
   artifacthub.io/license: Apache-2.0
   artifacthub.io/links: |
