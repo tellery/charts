@@ -16,7 +16,6 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config.yaml: {{ include (print $.Template.BasePath "/configmap-connector.yaml") . | sha256sum }}
         {{- if .Values.connector.annotations }}
 {{ toYaml .Values.connector.annotations | indent 8 }}
         {{- end }}
