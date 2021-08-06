@@ -63,7 +63,7 @@ spec:
         - name: CREATE_USER_PASSWORD
           value: {{ .Values.init.user.password }}
         {{- if .Values.server.env }}
-{{ toYaml .Values.server.env | indent 12 }}
+{{ toYaml .Values.server.env | indent 8 }}
         {{- end }}
         envFrom:
         - configMapRef:

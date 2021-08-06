@@ -61,7 +61,7 @@ spec:
         - name: CREATE_CONNECTOR_URL
           value: {{ include "tellery.fullname" . }}-connector:{{ .Values.connector.service.externalPort }}
         {{- if .Values.server.env }}
-{{ toYaml .Values.server.env | indent 12 }}
+{{ toYaml .Values.server.env | indent 8 }}
         {{- end }}
         envFrom:
         - configMapRef:
