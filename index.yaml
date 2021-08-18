@@ -4,6 +4,43 @@ entries:
   - annotations:
       artifacthub.io/images: |
         - name: tellery
+          image: tellery/tellery:0.7.0
+        - name: connector
+          image: tellery/connector:0.7.0
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Homepage
+          url: https://tellery.io
+        - name: Source
+          url: https://github.com/tellery/tellery
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.7.0
+    created: "2021-08-18T09:43:21.310134638Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.3.3
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.4.8
+    description: A Helm Chart for quickly installing highly available Tellery on Kubernetes
+    digest: 3f0c974bea32a7e4998ba4368e6729c774f04e85590025863b9a53c31553cb5d
+    icon: https://avatars.githubusercontent.com/u/86034719?s=400&v=4
+    maintainers:
+    - email: contact@tellery.io
+      name: Tellery
+      url: https://github.com/tellery
+    name: tellery
+    type: application
+    urls:
+    - https://github.com/tellery/charts/releases/download/tellery-0.0.10/tellery-0.0.10.tgz
+    version: 0.0.10
+  - annotations:
+      artifacthub.io/images: |
+        - name: tellery
           image: tellery/tellery:0.6.0
         - name: connector
           image: tellery/connector:0.6.0
@@ -309,4 +346,4 @@ entries:
     urls:
     - https://github.com/tellery/charts/releases/download/tellery-0.0.1/tellery-0.0.1.tgz
     version: 0.0.1
-generated: "2021-08-06T10:04:18.715901794Z"
+generated: "2021-08-18T09:43:21.310186239Z"
