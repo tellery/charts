@@ -7,7 +7,7 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
     release: {{ .Release.Name }}
 spec:
-  replicas: {{ .Values.connector.replicas }}
+  replicas: 1
   selector:
     matchLabels:
       app: {{ include "tellery.fullname" . }}
@@ -49,10 +49,15 @@ spec:
         imagePullPolicy: {{ default "IfNotPresent" .Values.images.connector.pullPolicy }}
         ports:
         - containerPort: {{ include "connector.port" . }}
+        env:
+        - name: connector.deployMode
+          value: LOCAL
+        - name: connector.workspaceId
+          value: '0'
         livenessProbe:
           tcpSocket:
             port: {{ include "connector.port" . }}
-          initialDelaySeconds: {{ .Values.connector.probeInitialDelaySeconds }} 
+          initialDelaySeconds: {{ .Values.connector.probeInitialDelaySeconds }}
           timeoutSeconds: 3
           periodSeconds: 30
           successThreshold: 1
@@ -60,7 +65,7 @@ spec:
         readinessProbe:
           tcpSocket:
             port: {{ include "connector.port" . }}
-          initialDelaySeconds: {{ .Values.connector.probeInitialDelaySeconds }} 
+          initialDelaySeconds: {{ .Values.connector.probeInitialDelaySeconds }}
           timeoutSeconds: 3
           periodSeconds: 30
           successThreshold: 1

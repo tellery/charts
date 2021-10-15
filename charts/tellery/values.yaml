@@ -174,10 +174,10 @@ system:
 
 init:
   user:
-    create: false
+    create: true
     name: admin
     email: admin@tellery.local
     password: admin
   workspace:
-    create: false
+    create: true
     name: Default
