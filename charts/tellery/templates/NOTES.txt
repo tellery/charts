@@ -1,3 +1,17 @@
 * When running upgrades, make sure to give back the `system.secretKey` value.
 
-kubectl -n {{ .Release.Namespace }} get configmap {{ template "tellery.fullname" . }}-server -o json | grep -m1 -Po '(?<=SECRET_KEY": )[^\\]*'
+kubectl -n {{ .Release.Namespace }} get configmap {{ template "tellery.fullname" . }}-server -o yaml | grep -m1 SECRET_KEY | sed 's/\s*SECRET_KEY:\s*//g'
+
+{{ if .Values.ingress.enabled }}
+
+Now you can access your service at https://{{ .Values.ingress.hostname}}
+
+{{ else }}
+
+Now you can access service by port-forwarding
+
+kubectl -n {{ .Release.Namespace }} port-forward service/{{ template "tellery.fullname" . }}-server {{ template "server.port" . }}:8080
+
+and your service is ready on http://localhost:8080
+
+{{ end}}
