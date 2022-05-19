@@ -50,9 +50,9 @@ spec:
         ports:
         - containerPort: {{ include "connector.port" . }}
         env:
-        - name: connector.deployMode
+        - name: DEPLOY_MODE
           value: LOCAL
-        - name: connector.workspaceId
+        - name: WORKSPACE_ID
           value: '0'
         livenessProbe:
           tcpSocket:
